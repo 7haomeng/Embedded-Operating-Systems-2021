@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)https://hackmd.io/@shoulderhu/SJzVYGeu8 -->
+<html lang="zh-TW"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="csrf-token" content="3FxK25zr-9VEtJDCNG6cZByuSgKyPfIK18Bw">
+    
+    
+    <meta name="description" content="  # Lab 5 東方快車  {%youtube DWT6cSDs9is %}  ## I. Introduction    請在 VM 上撰寫一隻Socket程式。在 VM 上會先將 server">
+    
+    <title>Lab 5 東方快車 - HackMD</title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+	<link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+    
+<script src="./Lab 5 東方快車 - HackMD_files/rules-p-GpPtabXgUQ99B.js" async=""></script><script type="text/javascript" async="" src="./Lab 5 東方快車 - HackMD_files/analytics.js" nonce=""></script><script type="text/javascript" async="" src="./Lab 5 東方快車 - HackMD_files/quant.js" nonce=""></script><script async="" src="./Lab 5 東方快車 - HackMD_files/gtm.js"></script><script nonce="">
+window.domain = 'hackmd.io'
+window.urlpath = ''
+window.debug = false
+window.version = '1.3.0'
+window.brand = 'HackMD'
+
+
+window.NOTE_ID = 'X1EaRHCGQKGpg9MvokfK0g'
+
+
+window.GOOGLE_API_KEY = 'AIzaSyCjSrqWHhmWJnoI7JlD88XDSaBgiKbaenA'
+window.GOOGLE_CLIENT_ID = '911617723593-drikdibvvn63slfd6kbqigo8ql1no55s.apps.googleusercontent.com'
+window.DROPBOX_APP_KEY = 'rdoizrlnkuha23r'
+
+window.PLANTUML_SERVER = 'https://ptuml.hackmd.io'
+
+window.ASSET_URL = 'https://assets.hackmd.io'
+
+window.USER_CAN_CREATE_TEAM = true
+window.USER_CAN_DELETE_ACCOUNT = true
+window.USER_DELETE_ACCOUNT_VIA_EMAIL = true
+window.PAYMENT_ENABLED = true
+window.GITHUB_SYNC_ENABLED = true
+window.GITLAB_SYNC_ENABLED = false
+window.GITLAB_SYNC_BASE_URL = ''
+window.VCS_SYNC_MODE = 'github'
+window.VCS_PROVIDER_NAME = 'GitHub'
+window.FREE_TEAM_NUM = 3
+window.FREE_TEAM_MEMBER_NUM = 3
+window.FREE_PUBLIC_TEAM_NUM = 10
+
+window.EE_SITE_ENABLE = false
+window.EE_SITE_NAME = 'false'
+window.EE_SITE_LINK = 'false'
+window.EESITE_INFO = false
+window.ENTERPRISE_DISCOVERY_ENABLE = false
+window.ENTERPRISE_DISCOVERY_TEAM = true
+window.ENTERPRISE_DISCOVERY_NOTE = true
+window.ENTERPRISE_DISCOVERY_VIEW_PERMISSION = 'guest'
+
+window.ALLOW_ANONYMOUS = true
+window.ALLOW_ANONYMOUS_EDIT = false
+window.PUBLIC_OVERVIEW = false
+window.INTERNAL_PUBLIC_OVERVIEW = false
+window.FULL_TEXT_SEARCH_ENABLE = false
+
+
+window.SHOW_HOT_NOTES = false
+
+
+
+window.HOT_NOTES_TIME_TYPE = 'week'
+
+
+
+window.SHOW_OVERVIEW = false
+
+
+window.USE_CDN = false
+
+
+window.MENTIONS = {}
+
+
+
+window.MENTION_ANCHORS = []
+
+
+
+window.COMMENT_ANCHORS = []
+
+
+
+window.IS_OWNER = false
+
+
+
+window.IS_TEAM_ADMIN = false
+
+
+
+window.IS_INVITEE_ADMIN = false
+
+
+
+window.USER_PROFILE = {"name":"Guest Gomez"}
+
+
+
+window.VERSION_TIME = '1605781955208'
+
+
+
+window.canEdit = false
+
+
+
+window.canWriteComment = false
+
+
+</script>
+
+
+    
+<!-- Google Tag Manager -->
+<script nonce="">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KLW9Z3');</script>
+<!-- End Google Tag Manager -->
+
+
+    <meta property="fb:app_id" content="1436904003272070">
+
+<meta name="twitter:image:src" content="https://avatars.githubusercontent.com/u/22985279?s=400">
+
+<meta name="twitter:site" content="@hackmdio">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lab 5 東方快車 - HackMD">
+
+<meta name="twitter:description" content="  # Lab 5 東方快車  {%youtube DWT6cSDs9is %}  ## I. Introduction    請在 VM 上撰寫一隻Socket程式。在 VM 上會先將 server">
+
+
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/22985279?s=400">
+
+<meta property="og:site_name" content="HackMD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lab 5 東方快車 - HackMD">
+
+<meta property="og:description" content="  # Lab 5 東方快車  {%youtube DWT6cSDs9is %}  ## I. Introduction    請在 VM 上撰寫一隻Socket程式。在 VM 上會先將 server">
+
+
+	
+    <link rel="stylesheet" href="./Lab 5 東方快車 - HackMD_files/emojify.min.css">
+     <link href="./Lab 5 東方快車 - HackMD_files/font-vendor.b86e2bf451b246b1a88e.css" rel="stylesheet"><link href="./Lab 5 東方快車 - HackMD_files/common-vendor.b8ecfc406ac0b5f77a26.css" rel="stylesheet"><link href="./Lab 5 東方快車 - HackMD_files/pretty-vendor.83ac49e057c3eac4fce3.css" rel="stylesheet"><link href="./Lab 5 東方快車 - HackMD_files/pretty.19b879c09c3e25be8b7f.css" rel="stylesheet">
+	
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+<![endif]-->
+
+<style></style><style></style><link rel="stylesheet" type="text/css" href="./Lab 5 東方快車 - HackMD_files/fretboard.f32f2a8d5293869f0195.css"><script charset="utf-8" src="./Lab 5 東方快車 - HackMD_files/fretboard.0e2da01022161fea12f4.js"></script></head>
+
+<body style="">
+    <div class="ui-infobar container-fluid unselectable hidden-print">
+        <div class="row">
+            <div class="col-xs-12 ui-infobar-inner">
+                <div class="ui-infobar__user-info">
+                    <ul class="list-inline">
+                        <li>
+                            
+                                <span class="ui-lastchangeuser" data-profile="bxYQcvjiTOa4Zir7H1zlxg"> <a class="ui-user-icon small user-card-popover" style="background-image: url(https://lh3.googleusercontent.com/a-/AOh14GjXER82lo1kf--CYyYxWjTGQMn2M4xBN2EwzH6RPA);" target="_blank" href="https://hackmd.io/@bxYQcvjiTOa4Zir7H1zlxg" data-toggle="popover" data-original-title="" title=""></a></span>
+                            
+                            &nbsp;<span class="text-uppercase ui-status-lastchange" title="2020年11月19日星期四 18:32">變更於 5 個月前</span>
+                            <span class="ui-lastchange text-uppercase" data-createtime="Sun Apr 12 2020 04:29:29 GMT+0000 (UTC)" data-updatetime="Thu Nov 19 2020 10:32:35 GMT+0000 (UTC)"></span>
+                        </li>
+                        
+                            <li>
+                                <span class="ui-owner" data-profile="shoulderhu">
+                                     <a class="ui-user-icon small user-card-popover" style="background-image: url(https://avatars.githubusercontent.com/u/22985279?s=96);" target="_blank" href="https://hackmd.io/@shoulderhu" data-toggle="popover" data-original-title="" title=""></a>
+                                    &nbsp;<span class="text-uppercase">擁有這篇筆記</span>
+                                </span>
+                            </li>
+                        
+                        
+                        <li>
+                            <span class="ui-more-info dn" data-toggle="popover">
+                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
+
+                                <div class="more-info-raw dn">
+                                    <span class="ui-published-note note-status-row dn">
+                                        <i class="fa fa-globe" aria-hidden="true" style="margin-top: 1px;"></i>
+                                        公開筆記
+                                    </span>
+
+                                    <span class="ui-connectedGithub note-status-row dn">
+                                        <i class="fa fa-20 ui-connectedGithubIcon fa-github"></i>
+
+                                        <span>與 GitHub 同步</span>
+
+                                        <br>
+
+                                        <a class="file-path" target="_blank"></a>
+                                    </span>
+                                </div>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="text-right ui-infobar__actions">
+                    <ul class="list-inline">
+                        <li>
+                            
+                                <a class="ui-signin community-button hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#"><span class="text"><i class="fa fa-fw fa-heart-o"></i>讚賞<span class="count"></span></span></a>
+                                <a class="ui-signin community-button hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#"><span class="text"><i class="fa fa-fw fa-bookmark-o"></i>收藏</span></a>
+                                <a class="ui-signin community-button hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#"><span class="text"><i class="fa fa-fw fa-bell-o"></i>訂閱</span></a>
+                            
+                        </li>
+                        
+                    </ul>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Markdown rendered container -->
+    <div id="doc" class="container-fluid markdown-body" data-hard-breaks="true"><h1 class="part" data-startline="5" data-endline="5" id="Lab-5-東方快車" data-id="Lab-5-東方快車"><a class="anchor hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#Lab-5-%E6%9D%B1%E6%96%B9%E5%BF%AB%E8%BB%8A" title="Lab-5-東方快車" smoothhashscroll=""><span class="octicon octicon-link"></span></a>Lab 5 東方快車</h1><p class="part" data-startline="7" data-endline="7" data-position="33" data-size="0"><span class="youtube" data-videoid="DWT6cSDs9is"><img src="./Lab 5 東方快車 - HackMD_files/hqdefault.jpg" style="visibility: hidden;"><i class="icon fa fa-youtube-play fa-5x"></i><iframe frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" src="./Lab 5 東方快車 - HackMD_files/DWT6cSDs9is.html"></iframe></span></p><h2 class="part" data-startline="9" data-endline="9" id="I-Introduction" data-id="I-Introduction"><a class="anchor hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#I-Introduction" title="I-Introduction" smoothhashscroll=""><span class="octicon octicon-link"></span></a>I. Introduction</h2><p class="part" data-startline="10" data-endline="10" data-position="78" data-size="0">請在 VM 上撰寫一隻Socket程式。在 VM 上會先將 server 程式執行起來，等待 client 程式來做連線。當連線建立之後，server 會將列車的 ASCII art，透過 socket 傳給 client 端，於是在 client 端 terminal 上就會看見一台列車從右到左急駛而過。</p><h2 class="part" data-startline="12" data-endline="12" id="II-Specification" data-id="II-Specification"><a class="anchor hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#II-Specification" title="II-Specification" smoothhashscroll=""><span class="octicon octicon-link"></span></a>II. Specification</h2><ul class="part" data-startline="13" data-endline="21">
+<li class="" data-startline="13" data-endline="17" data-position="260" data-size="0">Server (<strong data-position="268" data-size="0">自行撰寫</strong>)
+<ul>
+<li class="" data-startline="14" data-endline="14" data-position="284" data-size="0">建立 socket server，等待 client 來建立連線。</li>
+<li class="" data-startline="15" data-endline="15" data-position="324" data-size="0">server 端要能夠支援同時多人連線的情境。</li>
+<li class="" data-startline="16" data-endline="16" data-position="354" data-size="0">連線建立後，會去執行 <strong data-position="365" data-size="0">sl</strong> 程式並將輸出透過 socket 傳給 client 端。</li>
+<li class="" data-startline="17" data-endline="17" data-position="407" data-size="0">在 server 上印出火車的 ID，用建立出的 process id 來表示。</li>
+</ul>
+</li>
+<li class="" data-startline="18" data-endline="21" data-position="450" data-size="0">Client (助教提供)
+<ul>
+<li class="" data-startline="19" data-endline="19" data-position="470" data-size="0">使用 netcat 這隻程式來作為 client 端。</li>
+<li class="" data-startline="20" data-endline="21" data-position="504" data-size="0">與 server 建立連線後，接收傳來的資料。</li>
+</ul>
+</li>
+</ul><h2 class="part" data-startline="22" data-endline="22" id="III-Illustration" data-id="III-Illustration"><a class="anchor hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#III-Illustration" title="III-Illustration" smoothhashscroll=""><span class="octicon octicon-link"></span></a>III. Illustration</h2><ul class="part" data-startline="23" data-endline="34">
+<li class="" data-startline="23" data-endline="27" data-position="552" data-size="0">Server<pre><code class="bash hljs">./lab5 &lt;port&gt;
+</code></pre>
+<ul>
+<li class="" data-startline="27" data-endline="27" data-position="603" data-size="0">&lt;port&gt; 為 server listen 的端口。</li>
+</ul>
+</li>
+<li class="" data-startline="28" data-endline="34" data-position="633" data-size="0">Client<pre><code class="bash hljs">nc &lt;ip&gt; &lt;port&gt;
+</code></pre>
+<ul>
+<li class="" data-startline="32" data-endline="32" data-position="685" data-size="0">&lt;ip&gt; 為 server 所在的 ip。</li>
+<li class="" data-startline="33" data-endline="34" data-position="713" data-size="0">&lt;port&gt; 為 server listen 的端口。</li>
+</ul>
+</li>
+</ul><h2 class="part" data-startline="35" data-endline="35" id="IV-Note" data-id="IV-Note"><a class="anchor hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#IV-Note" title="IV-Note" smoothhashscroll=""><span class="octicon octicon-link"></span></a>IV. Note</h2><ul class="part" data-startline="36" data-endline="65">
+<li class="" data-startline="36" data-endline="36" data-position="756" data-size="0">socket 與 process 的撰寫請參考 laball.pdf 之 lab 3， 6-2 的範例程式碼。</li>
+<li class="" data-startline="37" data-endline="40" data-position="814" data-size="0">VM 上須安裝 sl, tmux 程式，以利程式正確執行。<pre><code class="bash hljs">sudo apt install sl tmux
+</code></pre>
+</li>
+<li class="" data-startline="41" data-endline="44" data-position="895" data-size="0">先ctrl-b，再用指令來關閉已經打開的session(影片最後的步驟)<pre><code>:kill-session
+</code></pre>
+</li>
+<li class="" data-startline="45" data-endline="48" data-position="968" data-size="0">在執行 sl 程式時，請加上參數 <code data-position="986" data-size="2">-l</code> 以產生出較小的列車。<pre><code class="bash hljs">sl -l
+</code></pre>
+</li>
+<li class="" data-startline="49" data-endline="51" data-position="1033" data-size="0">在 server 程式碼當中
+<ul>
+<li class="" data-startline="50" data-endline="50" data-position="1054" data-size="0">請使用 <a href="https://linux.die.net/man/3/execlp" target="_blank" rel="noopener">execlp()</a> 來執行 sl 程式。</li>
+<li class="" data-startline="51" data-endline="51" data-position="1122" data-size="0">請使用 <a href="http://man7.org/linux/man-pages/man2/dup.2.html" target="_blank" rel="noopener">dup2()</a> system call 將標準輸出重新導向給 socket 的 fd。</li>
+</ul>
+</li>
+<li class="" data-startline="52" data-endline="65" data-position="1223" data-size="0">請將下列程式碼加入到你的程式碼當中，來清除執行過程中產生的 zombie process。<pre><code class="c hljs"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;signal.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/wait.h&gt;</span></span>
+
+<span class="token keyword">void</span> <span class="token function">handler</span><span class="token punctuation">(</span><span class="token keyword">int</span> signum<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">waitpid</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> WNOHANG<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">signal</span><span class="token punctuation">(</span>SIGCHLD<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+</ul><h2 class="part" data-startline="66" data-endline="66" id="V-Demo-amp-Submission" data-id="V-Demo-amp-Submission"><a class="anchor hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#V-Demo-amp-Submission" title="V-Demo-amp-Submission" smoothhashscroll=""><span class="octicon octicon-link"></span></a>V. Demo &amp; Submission</h2><ul class="part" data-startline="67" data-endline="81">
+<li class="" data-startline="67" data-endline="67" data-position="1537" data-size="0">助教會提供 <a href="http://demo.sh/" target="_blank" rel="noopener">demo.sh</a> 來協助同學測試與 Demo。</li>
+<li class="" data-startline="68" data-endline="71" data-position="1568" data-size="0">助教會透過下列指令檢查同學是否有在系統上留下 zombie process。<pre><code class="bash hljs">ps aux | grep defunct | grep -v grep
+</code></pre>
+</li>
+<li class="" data-startline="72" data-endline="78" data-position="1670" data-size="0">請將程式碼以下列的格式擺放與命名，以方便助教評分。<pre><code class="bash hljs">&lt;學號&gt;_eos_lab5
+|-- Makefile
+|-- lab5.cpp
+|-- demo.sh    
+</code></pre>
+</li>
+<li class="" data-startline="79" data-endline="81" data-position="1790" data-size="0">請將上述之資料夾壓縮為單一 zip 檔案，並上傳到 E3 上。</li>
+</ul><h1 class="part" data-startline="82" data-endline="82" id="Lab-5-Hints" data-id="Lab-5-Hints"><a class="anchor hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#Lab-5-Hints" title="Lab-5-Hints" smoothhashscroll=""><span class="octicon octicon-link"></span></a>Lab 5 Hints</h1><h2 class="part" data-startline="84" data-endline="84" id="I-Preliminaries" data-id="I-Preliminaries"><a class="anchor hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#I-Preliminaries" title="I-Preliminaries" smoothhashscroll=""><span class="octicon octicon-link"></span></a>I. Preliminaries</h2><ul class="part" data-startline="85" data-endline="86">
+<li class="" data-startline="85" data-endline="86" data-position="1861" data-size="0">Review Lab 6-2: Socket Programming and Lab 8: Signal and Timer in laball</li>
+</ul><h2 class="part" data-startline="87" data-endline="87" id="II-dup2---duplicate-a-file-descriptor" data-id="II-dup2---duplicate-a-file-descriptor"><a class="anchor hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#II-dup2---duplicate-a-file-descriptor" title="II-dup2---duplicate-a-file-descriptor" smoothhashscroll=""><span class="octicon octicon-link"></span></a>II. dup2 - duplicate a file descriptor</h2><pre class="part" data-startline="88" data-endline="107" data-position="1977"><code class="c hljs"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span>  <span class="token comment">// perror()</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span> <span class="token comment">// exit()</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;fcntl.h&gt;</span>  <span class="token comment">// open()</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h&gt;</span> <span class="token comment">// dup2()</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>	
+	<span class="token keyword">int</span> fd<span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>fd <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"test.txt"</span><span class="token punctuation">,</span> O_CREAT <span class="token operator">|</span> O_RDWR<span class="token punctuation">,</span> <span class="token number">0644</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"open"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">exit</span><span class="token punctuation">(</span>EXIT_FAILURE<span class="token punctuation">)</span><span class="token punctuation">;</span>	
+	<span class="token punctuation">}</span>
+	
+	<span class="token function">dup2</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> STDOUT_FILENO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">close</span> <span class="token punctuation">(</span>fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello, World!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><hr><img src="./Lab 5 東方快車 - HackMD_files/p0viBq0.png" alt="Girl in a jacket" width="100%" height="100%"><hr><p class="part" data-startline="114" data-endline="114" data-position="2452" data-size="0"><a href="https://asciinema.org/a/2zGPw2BU35azHObMAGAfydBSm" target="_blank" rel="noopener"><img src="./Lab 5 東方快車 - HackMD_files/2zGPw2BU35azHObMAGAfydBSm.png" alt="asciicast" class="" data-position="2453" data-size="67"></a></p><h2 class="part" data-startline="117" data-endline="117" id="III-sl---display-animations" data-id="III-sl---display-animations"><a class="anchor hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#III-sl---display-animations" title="III-sl---display-animations" smoothhashscroll=""><span class="octicon octicon-link"></span></a>III. sl - display animations</h2><pre class="part" data-startline="118" data-endline="120" data-position="2608"><code class="bash hljs">sudo apt install sl
+</code></pre><p class="part" data-startline="121" data-endline="121" data-position="2640" data-size="0"><a href="https://asciinema.org/a/aOaPI1upcloMqIfhFu7RHdEKC" target="_blank" rel="noopener"><img src="./Lab 5 東方快車 - HackMD_files/aOaPI1upcloMqIfhFu7RHdEKC.png" alt="asciicast" class="" data-position="2641" data-size="67"></a></p><h2 class="part" data-startline="124" data-endline="124" id="IV-exec---Execute-a-file" data-id="IV-exec---Execute-a-file"><a class="anchor hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#IV-exec---Execute-a-file" title="IV-exec---Execute-a-file" smoothhashscroll=""><span class="octicon octicon-link"></span></a>IV. exec - Execute a file</h2><ul class="part" data-startline="125" data-endline="130">
+<li class="" data-startline="125" data-endline="129" data-position="2794" data-size="0">execl, execlp, execv, execvp
+<ul>
+<li class="" data-startline="126" data-endline="126" data-position="2829" data-size="0">int execl(const char *path, const char *arg, …);</li>
+<li class="" data-startline="127" data-endline="127" data-position="2886" data-size="0">int execlp(const char *file, const char *arg, …);</li>
+<li class="" data-startline="128" data-endline="128" data-position="2944" data-size="0">int execv(const char *path, char *const argv[]);</li>
+<li class="" data-startline="129" data-endline="129" data-position="2999" data-size="0">int execvp(const char *file, char *const argv[]);</li>
+</ul>
+</li>
+<li class="" data-startline="130" data-endline="130" data-position="3051" data-size="0">Example for execute ls instruction</li>
+</ul><pre class="part" data-startline="131" data-endline="145" data-position="3086"><code class="bash hljs"><span class="hljs-comment">#include &lt;unistd.h&gt;</span>
+
+int main(int argc, char *argv[]) {
+    execl(<span class="hljs-string">"/bin/ls"</span>, <span class="hljs-string">"/bin/ls"</span>, <span class="hljs-string">"-l"</span>, NULL);
+    
+    execlp(<span class="hljs-string">"ls"</span>, <span class="hljs-string">"ls"</span>, <span class="hljs-string">"-l"</span>, NULL);
+    
+    char *arg1[] = {<span class="hljs-string">"/bin/ls"</span>, <span class="hljs-string">"-l"</span>, NULL};
+    execv(arg1[0], arg1);
+    
+    char *arg2[] = {<span class="hljs-string">"ls"</span>, <span class="hljs-string">"-l"</span>, NULL};
+    execvp(arg2[0], arg2);
+}
+</code></pre><h2 class="part" data-startline="147" data-endline="147" id="V-Zombie-process-handler" data-id="V-Zombie-process-handler"><a class="anchor hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#V-Zombie-process-handler" title="V-Zombie-process-handler" smoothhashscroll=""><span class="octicon octicon-link"></span></a>V. Zombie process handler</h2><ul class="part" data-startline="149" data-endline="149">
+<li class="" data-startline="149" data-endline="149" data-position="3421" data-size="0">Example for waiting zombie process</li>
+</ul><pre class="part" data-startline="150" data-endline="161" data-position="3456"><code class="bash hljs"><span class="hljs-comment">#include &lt;signal.h&gt;   // signal()</span>
+<span class="hljs-comment">#include &lt;sys/wait.h&gt; // waitpid()</span>
+
+void handler(int signum) {
+    <span class="hljs-keyword">while</span> (waitpid(-1, NULL, WNOHANG) &gt; 0);
+}
+
+int main(int argc, char *argv[]) {
+    signal(SIGCHLD, handler);
+}
+</code></pre><h2 class="part" data-startline="163" data-endline="163" id="VI-Address-already-in-use" data-id="VI-Address-already-in-use"><a class="anchor hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#VI-Address-already-in-use" title="VI-Address-already-in-use" smoothhashscroll=""><span class="octicon octicon-link"></span></a>VI. Address already in use</h2><ul class="part" data-startline="164" data-endline="164">
+<li class="" data-startline="164" data-endline="164" data-position="3712" data-size="0">Force using socket address already in use</li>
+</ul><pre class="part" data-startline="165" data-endline="176" data-position="3754"><code class="c hljs"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/socket.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> fd <span class="token operator">=</span> <span class="token function">socket</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">int</span> yes <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token function">setsockopt</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> SOL_SOCKET<span class="token punctuation">,</span> SO_REUSEADDR<span class="token punctuation">,</span> <span class="token operator">&amp;</span>yes<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>yes<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token function">bind</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre><h2 class="part" data-startline="178" data-endline="178" id="VII-Close-server-socket" data-id="VII-Close-server-socket"><a class="anchor hidden-xs" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#VII-Close-server-socket" title="VII-Close-server-socket" smoothhashscroll=""><span class="octicon octicon-link"></span></a>VII. Close server socket</h2><ul class="part" data-startline="179" data-endline="179">
+<li class="" data-startline="179" data-endline="179" data-position="3993" data-size="0">Close socket when catching SIGINT signal</li>
+</ul><pre class="part" data-startline="180" data-endline="193" data-position="4034"><code class="c hljs"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;signal.h&gt;</span> <span class="token comment">// signal()</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h&gt;</span> <span class="token comment">// close()</span></span>
+
+<span class="token keyword">int</span> sockfd<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">handler</span><span class="token punctuation">(</span><span class="token keyword">int</span> signum<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">close</span><span class="token punctuation">(</span>sockfd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">signal</span><span class="token punctuation">(</span>SIGINT<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div>
+
+    <div class="document-footer container-fluid pb-2 hidden-print">
+        <hr>
+        <div class="footer flex items-center">
+    <div class="footer__published-by flex-grow-1">
+        <span>發表於</span> <strong><a href="https://hackmd.io/" target="_blank"><i class="fa fa-file-text"></i> <span class="brand">HackMD</span></a></strong>
+    </div>
+    <div class="footer__views" style="margin-right: 18px;">
+        <i class="fa fa-eye"></i> <span class="ui-viewcount" title="449">449</span>
+    </div>
+    <div class="footer__views">
+    
+        <a class="ui-signin community-button" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#"><span><i class="fa fa-fw fa-heart-o"></i><span class="text hidden-xs">讚賞</span><span class="count"></span></span></a>
+        <a class="ui-signin community-button" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#"><span><i class="fa fa-fw fa-bookmark-o"></i><span class="text hidden-xs">收藏</span></span></a>
+        <a class="ui-signin community-button" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#"><span><i class="fa fa-fw fa-bell-o"></i><span class="text hidden-xs">訂閱</span></span></a>
+    
+    </div>
+</div>
+
+    </div>
+
+    <div class="ui-community unselectable hidden-print hidden-xs" style="left: 492px; display: none;">
+        
+            <a class="ui-signin community-button" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#" title="" data-toggle="tooltip" data-placement="right" data-offset="0,5" data-original-title="讚賞"><span><i class="fa fa-fw fa-heart-o"></i><span class="count ml-2"></span></span></a>
+            <a class="ui-signin community-button" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#" title="" data-toggle="tooltip" data-placement="right" data-offset="0,5" data-original-title="收藏"><span><i class="fa fa-fw fa-bookmark-o"></i></span></a>
+            <a class="ui-signin community-button" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#" title="" data-toggle="tooltip" data-placement="right" data-offset="0,5" data-original-title="訂閱"><span><i class="fa fa-fw fa-bell-o"></i></span></a>
+        
+    </div>
+
+    <div class="ui-toc dropup unselectable hidden-print" style="display: none; left: 502.641px;">
+        <div class="pull-left dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#" role="button" aria-haspopup="true" aria-expanded="false" title="目錄">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel"><div class="toc"><ul class="nav">
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#Lab-5-%E6%9D%B1%E6%96%B9%E5%BF%AB%E8%BB%8A" title="Lab 5 東方快車" smoothhashscroll="">Lab 5 東方快車</a><ul class="nav">
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#I-Introduction" title="I. Introduction" smoothhashscroll="">I. Introduction</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#II-Specification" title="II. Specification" smoothhashscroll="">II. Specification</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#III-Illustration" title="III. Illustration" smoothhashscroll="">III. Illustration</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#IV-Note" title="IV. Note" smoothhashscroll="">IV. Note</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#V-Demo-amp-Submission" title="V. Demo &amp; Submission" smoothhashscroll="">V. Demo &amp; Submission</a></li>
+</ul>
+</li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#Lab-5-Hints" title="Lab 5 Hints" smoothhashscroll="">Lab 5 Hints</a><ul class="nav">
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#I-Preliminaries" title="I. Preliminaries" smoothhashscroll="">I. Preliminaries</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#II-dup2---duplicate-a-file-descriptor" title="II. dup2 - duplicate a file descriptor" smoothhashscroll="">II. dup2 - duplicate a file descriptor</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#III-sl---display-animations" title="III. sl - display animations" smoothhashscroll="">III. sl - display animations</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#IV-exec---Execute-a-file" title="IV. exec - Execute a file" smoothhashscroll="">IV. exec - Execute a file</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#V-Zombie-process-handler" title="V. Zombie process handler" smoothhashscroll="">V. Zombie process handler</a></li>
+<li><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#VI-Address-already-in-use" title="VI. Address already in use" smoothhashscroll="">VI. Address already in use</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#VII-Close-server-socket" title="VII. Close server socket" smoothhashscroll="">VII. Close server socket</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#">全部展開</a><a class="back-to-top" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#">回到頂部</a><a class="go-to-bottom" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#">移至底部</a></div></ul>
+        </div>
+    </div>
+
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print affix" data-spy="affix" style="top: 87px; left: 261.062px; width: 539px;"><div class="toc"><ul class="nav">
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#Lab-5-%E6%9D%B1%E6%96%B9%E5%BF%AB%E8%BB%8A" title="Lab 5 東方快車" smoothhashscroll="">Lab 5 東方快車</a><ul class="nav">
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#I-Introduction" title="I. Introduction" smoothhashscroll="">I. Introduction</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#II-Specification" title="II. Specification" smoothhashscroll="">II. Specification</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#III-Illustration" title="III. Illustration" smoothhashscroll="">III. Illustration</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#IV-Note" title="IV. Note" smoothhashscroll="">IV. Note</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#V-Demo-amp-Submission" title="V. Demo &amp; Submission" smoothhashscroll="">V. Demo &amp; Submission</a></li>
+</ul>
+</li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#Lab-5-Hints" title="Lab 5 Hints" smoothhashscroll="">Lab 5 Hints</a><ul class="nav">
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#I-Preliminaries" title="I. Preliminaries" smoothhashscroll="">I. Preliminaries</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#II-dup2---duplicate-a-file-descriptor" title="II. dup2 - duplicate a file descriptor" smoothhashscroll="">II. dup2 - duplicate a file descriptor</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#III-sl---display-animations" title="III. sl - display animations" smoothhashscroll="">III. sl - display animations</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#IV-exec---Execute-a-file" title="IV. exec - Execute a file" smoothhashscroll="">IV. exec - Execute a file</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#V-Zombie-process-handler" title="V. Zombie process handler" smoothhashscroll="">V. Zombie process handler</a></li>
+<li><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#VI-Address-already-in-use" title="VI. Address already in use" smoothhashscroll="">VI. Address already in use</a></li>
+<li class=""><a href="https://hackmd.io/@shoulderhu/SJzVYGeu8#VII-Close-server-socket" title="VII. Close server socket" smoothhashscroll="">VII. Close server socket</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#">全部展開</a><a class="back-to-top" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#">回到頂部</a><a class="go-to-bottom" href="https://hackmd.io/@shoulderhu/SJzVYGeu8#">移至底部</a></div></div>
+    
+
+    <div class="clearfix"></div>
+
+    <!-- signin modal -->
+<div class="modal fade signin-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: 10px; right: 20px; position: absolute;"><span aria-hidden="true">×</span></button>
+            
+
+
+
+
+
+
+    
+
+
+
+
+
+
+<h3>登入</h3>
+
+<form data-toggle="validator" role="form" class="form-horizontal" method="post" enctype="application/x-www-form-urlencoded" novalidate="true">
+    <div class="dn"><input type="hidden" name="_csrf" value="3FxK25zr-9VEtJDCNG6cZByuSgKyPfIK18Bw"></div>
+    <div class="dn"><input type="hidden" name="create_team" value="false"></div>
+    <div class="dn"><input type="hidden" name="create_paid_team" value="false"></div>
+    <div class="form-group  ">
+        <label for="email" class="control-label">Email</label>
+        <label for="inputEmail" class="control-label pull-right errors">
+            
+        </label>
+        <span class="help-block control-label with-errors pull-right" style="display: inline;"></span>
+        <div class="input-block">
+            
+                <input type="email" class="form-control" name="email" placeholder="您的 Email" required="" autocomplete="email">
+            
+            <span class="error-sign"></span>
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="password" class="control-label">密碼</label>
+        <label for="inputPassword" class="control-label pull-right errors">
+            
+        </label>
+        <span class="help-block control-label with-errors pull-right" style="display: inline;"></span>
+        <div class="input-block">
+            <input type="password" class="form-control" name="password" placeholder="您的密碼" required="" autocomplete="current-password">
+            <span class="error-sign"></span>
+            
+                <span class="control-label pull-right" style="font-size: 13px; margin-top: 5px;"><a href="https://hackmd.io/settings/forgotPassword" style="text-decoration: underline;">忘記密碼</a></span>
+            
+        </div>
+    </div>
+
+    <div style="text-align: center; padding-top: 15px; margin-bottom: 0px;">
+        
+            <input type="submit" class="btn btn-success btn-large disabled" formaction="https://hackmd.io/login" value="登入">
+        
+
+        
+    </div>
+</form>
+
+
+
+
+
+
+
+
+    
+        <p class="seperator">或是</p>
+    
+
+    
+        <p>繼續登入，代表您同意<a href="https://hackmd.io/s/terms" target="_blank">服務條款</a>。</p>
+    
+
+    <div class="social-buttons-container">
+    
+    <a href="https://hackmd.io/auth/facebook" class="btn btn-lg btn-block btn-social btn-facebook">
+        <i class="fa fa-facebook"></i> 透過 Facebook 登入
+    </a>
+    
+    
+    <a href="https://hackmd.io/auth/twitter" class="btn btn-lg btn-block btn-social btn-twitter">
+        <i class="fa fa-twitter"></i> 透過 Twitter 登入
+    </a>
+    
+    
+    <a href="https://hackmd.io/auth/github" class="btn btn-lg btn-block btn-social btn-github">
+        <i class="fa fa-github"></i> 透過 GitHub 登入
+    </a>
+    
+    
+    <a href="https://hackmd.io/auth/dropbox" class="btn btn-lg btn-block btn-social btn-dropbox">
+        <i class="fa fa-dropbox"></i> 透過 Dropbox 登入
+    </a>
+    
+    
+    <a href="https://hackmd.io/auth/google" class="btn btn-lg btn-block btn-social btn-google">
+        <i class="icon icon-google"></i> 透過 Google 登入
+    </a>
+    
+    
+</div>
+
+
+
+
+
+    <div>
+        <p>第一次使用 HackMD？ <a href="https://hackmd.io/join">註冊</a></p>
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+    
+<script async="" src="./Lab 5 東方快車 - HackMD_files/js"></script>
+<script nonce="">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    let userid = (document.cookie.match('(^|; )userid=([^;]*)')||0)[2];
+    gtag('config', 'UA-60728495-1', {'user_id': userid});
+</script>
+<script src="./Lab 5 東方快車 - HackMD_files/bundle.min.js" crossorigin="anonymous"></script>
+<script nonce="">Sentry.init({ dsn: 'https://73410f1915d84abc8b2dd1f1aabd1c82@sentry.hackmd.dev/4', environment: 'production', integrations: function (intrus) { return intrus.filter(function (itr) { return itr.name !== 'TryCatch' }) } });</script>
+
+
+    
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLW9Z3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+    <script src="./Lab 5 東方快車 - HackMD_files/i18n.js"></script>
+    
+         <script src="./Lab 5 東方快車 - HackMD_files/font-vendor.3c28db3001b8bd6f1d3f.js" defer="defer"></script><script src="./Lab 5 東方快車 - HackMD_files/common-vendor.d485f77e88ea7ed44236.js" defer="defer"></script><script src="./Lab 5 東方快車 - HackMD_files/pretty-vendor.8cb6bea87308a18ed1a0.js" defer="defer"></script><script src="./Lab 5 東方快車 - HackMD_files/pretty-common.4d6c7240430ad1e65002.js" defer="defer"></script><script src="./Lab 5 東方快車 - HackMD_files/pretty.ade1dfabd91dedd499b6.js" defer="defer"></script>
+    
+    
+
+
+
+</body></html>

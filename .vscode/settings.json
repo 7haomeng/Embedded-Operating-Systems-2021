@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "fs.h": "c",
+        "pthread.h": "c",
+        "algorithm": "c",
+        "system_error": "c",
+        "sockop.h": "c",
+        "stdio.h": "c",
+        "exception": "cpp",
+        "new": "cpp"
+    }
+}

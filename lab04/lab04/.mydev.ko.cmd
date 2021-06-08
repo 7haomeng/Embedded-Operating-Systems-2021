@@ -1,0 +1,1 @@
+cmd_/home/chinghaomeng/linux-xlnx/lab04/mydev.ko := arm-linux-gnueabihf-ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/chinghaomeng/linux-xlnx/lab04/mydev.ko /home/chinghaomeng/linux-xlnx/lab04/mydev.o /home/chinghaomeng/linux-xlnx/lab04/mydev.mod.o ;  true

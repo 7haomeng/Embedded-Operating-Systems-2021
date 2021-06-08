@@ -1,0 +1,4 @@
+customer: 3
+pancake: 6
+blacktea: 4
+income: 360$
